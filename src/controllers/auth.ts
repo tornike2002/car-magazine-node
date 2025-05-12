@@ -9,7 +9,8 @@ export const register = async (req: Request, res: Response) => {
   const user = await Auth.findOne({ email })
 
   if (user) {
-    return res.status(400).json({ message: 'User already exists' })
+    res.status(400).json({ message: 'User already exists' })
+    return
   }
 
   const hashedPassword = await bcrypt.hash(password, 10)
@@ -37,13 +38,15 @@ export const login = async (req: Request, res: Response) => {
   const existingUser = await Auth.findOne({ email })
 
   if (!existingUser) {
-    return res.status(400).json({ message: 'User not found' })
+    res.status(400).json({ message: 'User not found' })
+    return
   }
 
   const passwordMatch = await bcrypt.compare(password, existingUser.password)
 
   if (!passwordMatch) {
-    return res.status(400).json({ message: 'Invalid password' })
+    res.status(400).json({ message: 'Invalid password' })
+    return
   }
 
   const token = generateToken(existingUser._id.toString())
