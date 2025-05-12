@@ -22,7 +22,8 @@ export const getCarousel = async (req: Request, res: Response) => {
 
 export const getCarouselBySlug = async (req: Request, res: Response) => {
   const { slug } = req.params
-  const data = await Carousel.findOne({ slug })
+  const formattedSlug = slugify(slug, { lower: true })
+  const data = await Carousel.findOne({ slug: formattedSlug })
 
   if (!data) {
     res.status(404).json({
