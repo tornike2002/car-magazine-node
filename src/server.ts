@@ -5,6 +5,7 @@ import cookieParser from 'cookie-parser'
 import authRoutes from './routes/auth'
 import carouselRoutes from './routes/carousel'
 import categoryRoutes from './routes/category'
+import tagsRoutes from './routes/tags'
 dotenv.config()
 
 const app = express()
@@ -19,5 +20,7 @@ app.use('/api/auth', authRoutes)
 app.use('/api/carousel', carouselRoutes)
 
 app.use('/api/category', categoryRoutes)
+
+app.use('/api/tags', tagsRoutes)
 
 export default app
