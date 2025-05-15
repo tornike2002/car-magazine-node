@@ -67,17 +67,6 @@ The API is documented using Swagger. After starting the server, access the docum
 http://localhost:<PORT>/api-docs
 ```
 
-## Environment Variables
-
-The following environment variables are required:
-
-```
-PORT=3000
-MONGODB_URI=mongodb://localhost:27017/car-magazine
-JWT_SECRET=your_jwt_secret_here
-JWT_EXPIRES_IN=90d
-```
-
 ## License
 
 ISC
