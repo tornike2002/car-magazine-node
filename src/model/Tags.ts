@@ -6,7 +6,7 @@ const tagSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
-})
+}, { timestamps: true })
 
 const Tag = mongoose.model('Tag', tagSchema)
 
